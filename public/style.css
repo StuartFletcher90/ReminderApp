@@ -1,0 +1,105 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Lato', sans-serif;
+
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+.lead-heading{
+    font-size: 50px;
+
+}
+  .bg-div {
+    /* The image used */
+    background-image: url("./note-3454277.jpg");
+  
+    /* Add the blur effect */
+    filter: blur(8px);
+    -webkit-filter: blur(4px);
+    z-index: -1;
+  
+    /* Full height */
+    height: 100%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  /* Position text in the middle of the page/image */
+  .container {
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    box-shadow: 5px 10px #3a7af29c;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 40%;
+    height: 30%;
+    padding: 20px;
+    text-align: center;
+  }
+
+  /* button css */
+
+  .btn-div {
+
+  }
+.input-box{
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-bottom: 15px;
+    width: 20%;
+    height: 15%;
+}
+
+.btnStyle {
+    border-radius: 4px;
+    background-color: #3A7BF2;
+    border: 2px solid #4CAF50; /* Green */
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 20px;
+    width: 20%;
+    height: 20%;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  /* .btnStyle span {
+    cursor: pointer;
+    display: inline-block;
+    /* position: relative; */
+    /* transition: 0.5s; */
+  /* }
+  
+  .btnStyle span:after {
+    content: '\00bb';
+    /* position: absolute; */
+    /* opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .btnStyle:hover span {
+    padding-right: 25px;
+  }
+  
+  .btnStyle:hover span:after {
+    opacity: 1;
+    right: 0;
+  }  */ 
