@@ -20,7 +20,6 @@ const getData = async () => {
     connection.end();
 }
 
-
 const addUser = async (username, email) => {
     try {
         let data = await promisifiedQuery(
@@ -31,9 +30,40 @@ const addUser = async (username, email) => {
     }
 }
 
+const signIn = async (username, email) => {
+    try {
+    let data = await promisifiediQuery(
+        `SELECT DISTINCT users.id, reminders.reminder_content, reminders.id AS rId FROM users
+        LEFT JOIN reminders ON users.id = reminders.user_id
+        WHERE username="${username}" AND email="${email}"`);
+
+        if (data.length == 0) {
+            console.log("You are not registered! Please sign up");
+            return data;
+        } else {
+            console.log("Logging you in....")
+            return data;
+            // {
+            // id: data[0].id,
+            // username: data[0].username,
+            // email: data[0].email, 
+            // reminderId: data[0].rId,
+            // reminderContent: data[0].reminder_content
+            // };
+        }   
+    } catch (error) {
+        console.log("There was an error Signing In")
+        
+    }
+}
+
+
+
+    
 
 module.exports = {
     getData,
     addUser,
+    signIn,
 }
 

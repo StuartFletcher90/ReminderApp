@@ -1,6 +1,9 @@
 const express = require("express");
-const {runQuery, addUser} = require("./app.js");
+const path = require('path');
+const {runQuery, addUser, signIn} = require("./app.js");
 const app = express();
+
+app.use(express.static(path.join(__dirname, "public")));
 
 app.get('/data', async (req, res) => {
     let data =  await runQuery();
@@ -10,6 +13,12 @@ app.get('/data', async (req, res) => {
 app.get('/add', async (req, res) => {
     await addUser(req.query.username, req.query.email);
     res.send({message: "Added to database!"})
+});
+
+app.get('/signIn', async (req, res) => {
+    let data = await signIn(req.query.username, req.query.email);
+    res.send(data)
+    console.log(data)
 });
 
 
