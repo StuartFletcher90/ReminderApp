@@ -31,8 +31,8 @@ document.getElementById("register-btn").addEventListener("click", function() {
 const username =  document.getElementById("username-input");
 const email =  document.getElementById("email-input");
 
-const signInButton =  document.getElementById("sign-upbtn");
-const registerButton =  document.getElementById("registerbtn");
+const signInButton =  document.getElementById("sign-inbtn");
+const registerButton =  document.getElementById("register-details");
 
 
 registerButton.addEventListener("click", async () => {
@@ -43,12 +43,14 @@ registerButton.addEventListener("click", async () => {
 })
 
 signInButton.addEventListener("click", async () => {
-    let response = await fetch (`http://localhost:3000/signIn?username=${username.value}&email=${email.value}`);
+    let response = await fetch (`http://localhost:3000/signin?username=${username.value}&email=${email.value}`);
     let data = await response.json();
     if (data.length == 0) {
         console.log("You are not registered! Please sign up")
     } else {
-        console.log(data.id, data.username, data.email);
+        data.forEach(ele => {
+            console.log(ele)
+        });
     }
     
     username.value = "";
