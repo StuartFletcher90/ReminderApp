@@ -32,17 +32,17 @@ const addUser = async (username, email) => {
 
 const signIn = async (username, email) => {
     try {
-    let data = await promisifiediQuery(
+    let rdata = await promisifiediQuery(
         `SELECT DISTINCT users.id, reminders.reminder_content, reminders.id AS rId FROM users
         LEFT JOIN reminders ON users.id = reminders.user_id
         WHERE username="${username}" AND email="${email}"`);
 
-        if (data.length == 0) {
+        if (rdata.length == 0) {
             console.log("You are not registered! Please sign up");
-            return data;
+            return rdata;
         } else {
             console.log("Logging you in....")
-            return data;
+            return rdata;
             // {
             // id: data[0].id,
             // username: data[0].username,
@@ -57,7 +57,13 @@ const signIn = async (username, email) => {
     }
 }
 
+const listReminders = () => {
+    
+    for (let i = 0; i < rdata.length; i++) {
+        
+    }
 
+}
 
     
 
