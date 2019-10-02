@@ -32,17 +32,25 @@ const addUser = async (username, email) => {
 
 const signIn = async (username, email) => {
     try {
-    let rdata = await promisifiediQuery(
-        `SELECT DISTINCT users.id, reminders.reminder_content, reminders.id AS rId FROM users
-        LEFT JOIN reminders ON users.id = reminders.user_id
-        WHERE username="${username}" AND email="${email}"`);
+        let data = await promisifiedQuery(
+            // `SELECT users.*, reminders.reminder_content, reminders.id AS rId FROM users
+            // LEFT JOIN reminders ON users.id = reminders.user_id
+            // WHERE username="${username}" AND email="${email}"`
+            // `SELECT * FROM users WHERE username="${username}" AND email="${email}"`
 
-        if (rdata.length == 0) {
+            `SELECT username, reminder_content FROM reminders
+            RIGHT JOIN users ON reminders.user_id = users.id
+            WHERE username="${username}" AND email="${email}"`
+
+        );
+        // for each data = push data[i].reminderContent
+
+        if (data.length == 0) {
             console.log("You are not registered! Please sign up");
-            return rdata;
+            return data;
         } else {
             console.log("Logging you in....")
-            return rdata;
+            return data;
             // {
             // id: data[0].id,
             // username: data[0].username,
@@ -52,18 +60,19 @@ const signIn = async (username, email) => {
             // };
         }   
     } catch (error) {
+        // console.log(error)
         console.log("There was an error Signing In")
         
     }
 }
 
-const listReminders = () => {
+// const listReminders = () => {
     
-    for (let i = 0; i < rdata.length; i++) {
+//     for (let i = 0; i < rdata.length; i++) {
         
-    }
+//     }
 
-}
+// }
 
     
 
