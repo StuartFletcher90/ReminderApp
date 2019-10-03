@@ -41,7 +41,7 @@ body, html {
   /* Position text in the middle of the page/image */
 .container {
     background-color: rgba(0, 0, 0, 0.562); /* Black w/opacity/see-through */
-    color: grey;
+    color: rgb(255, 255, 255);
     font-weight: bold;
     border: 2px solid #ffffff;
     /* box-shadow: 5px 10px #3a7af29c;   */

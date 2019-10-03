@@ -47,14 +47,10 @@ const myReminders = []
 
 
 
-const username = document.getElementById("username-input");
-const email = document.getElementById("email-input");
-
-
 
 
 registerButton.addEventListener("click", async () => {
-    let response = await fetch(`http://localhost:3000/add?username=${username.value}&email=${email.value}`);
+    let response = await fetch(`http://192.168.5.29:3000/add?username=${username.value}&email=${email.value}`);
     let data = await response.json();
     username.value = "";
     email.value = "";
@@ -62,13 +58,13 @@ registerButton.addEventListener("click", async () => {
 
 signInButton.addEventListener("click", async () => {
 
-    let response = await fetch (`http://localhost:3000/signin?username=${username.value}&email=${email.value}`);
+    let response = await fetch (`http://192.168.5.29:3000/signin?username=${username.value}&email=${email.value}`);
 
     let data = await response.json();
     if (data.length == 0) {
         console.log("You are not registered! Please sign up")
     } else {
-        //showMain();
+         showMain();
         data.forEach(ele => {
             myReminders.push(ele)
         });
