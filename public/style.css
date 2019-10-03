@@ -96,6 +96,10 @@ body, html {
 .hideMe {
   display: none;
 }
+
+.showMe {
+  display: block;
+}
 /* button css & flex */
 .btnStyle {
     border-radius: 4px;
