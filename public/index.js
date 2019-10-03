@@ -42,13 +42,14 @@ mySuccess = () => {
     }
 }
 
+
 const username =  document.getElementById("username-input");
 const email =  document.getElementById("email-input");
 const signInButton =  document.getElementById("sign-inbtn");
 const registerButton =  document.getElementById("register-details");
-const myRemindersHTML = document.getElementById("my-reminders")
+const addToList = document.getElementById("addtolist");
 const usersName = document.getElementById("users-name")
-const myReminders = []
+let currentUser = 0;
 
 registerButton.addEventListener("click", async () => {
     let response = await fetch(`/add?username=${username.value}&email=${email.value}`);
@@ -76,10 +77,19 @@ signInButton.addEventListener("click", async () => {
             document.getElementById("myUL").appendChild(li);
         }
         usersName.innerText = `Welcome back ${username.value}`
+        // console.log(data)
+        // currentUser = 0
     }
     username.value = "";
     email.value = "";
 });
+
+// addToList.addEventListener("click", ()=> {
+//     let response = await fetch(`/add?username=${username.value}&email=${email.value}`);
+//     let data = await response.json();
+// })
+
+
 
 myRegister = () => {
 

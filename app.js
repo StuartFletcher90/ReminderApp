@@ -30,6 +30,18 @@ const addUser = async (username, email) => {
     }
 }
 
+// const addReminder = async (user_id, reminder_content) => {
+//     try {
+//         let data = await promisifiedQuery (
+//             `INSERT INTO reminders (user_id, reminder_content) VALUES ('${user_id}', '${reminder_content}')`
+//             console.log("User Added")
+//         );
+//     } catch (error) {
+//         console.log(error)
+//         console.log("There was an error adding a reminder")
+//     }
+// }
+
 const signIn = async (username, email) => {
     try {
         let data = await promisifiedQuery(
@@ -38,7 +50,7 @@ const signIn = async (username, email) => {
             // WHERE username="${username}" AND email="${email}"`
             // `SELECT * FROM users WHERE username="${username}" AND email="${email}"`
 
-            `SELECT reminder_content FROM reminders
+            `SELECT user_id, reminder_content FROM reminders
             RIGHT JOIN users ON reminders.user_id = users.id
             WHERE username="${username}" AND email="${email}"`
 
