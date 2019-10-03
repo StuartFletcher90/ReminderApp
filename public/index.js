@@ -43,12 +43,14 @@ const username =  document.getElementById("username-input");
 const email =  document.getElementById("email-input");
 const signInButton =  document.getElementById("sign-inbtn");
 const registerButton =  document.getElementById("register-details");
+const myRemindersHTML = document.getElementById("my-reminders")
+const usersName = document.getElementById("users-name")
 const myReminders = []
 
 
 
 registerButton.addEventListener("click", async () => {
-    let response = await fetch(`http://localhost:3000/add?username=${username.value}&email=${email.value}`);
+    let response = await fetch(`/add?username=${username.value}&email=${email.value}`);
     let data = await response.json();
     username.value = "";
     email.value = "";
@@ -56,18 +58,24 @@ registerButton.addEventListener("click", async () => {
 
 signInButton.addEventListener("click", async () => {
 
-    let response = await fetch (`http://localhost:3000/signin?username=${username.value}&email=${email.value}`);
+    let response = await fetch (`/signin?username=${username.value}&email=${email.value}`,{
+        method: 'GET',
+        mode: "no-cors",
+        content: 'application/json'
+    });
 
     let data = await response.json();
     if (data.length == 0) {
         console.log("You are not registered! Please sign up")
     } else {
         //showMain();
-        data.forEach(ele => {
-            myReminders.push(ele)
-        });
-        console.log(myReminders);
-
+        for (let i = 0; i < data.length; i++) {
+            let li = document.createElement("li");
+            let t = document.createTextNode(Object.values(data[i]));
+            li.appendChild(t);
+            document.getElementById("myUL").appendChild(li);
+        }
+        usersName.innerText = `Welcome back ${username.value}`
     }
     username.value = "";
     email.value = "";
@@ -79,6 +87,6 @@ myRegister = () => {
 }
 
 const showMain = () => {
-    window.location.href="main.html"
+    
 }
 
