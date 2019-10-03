@@ -29,20 +29,8 @@ document.getElementById("register-btn").addEventListener("click", function () {
     document.getElementById("register-details").style.display = "block";
 });
 
-<<<<<<< HEAD
 const username =  document.getElementById("username-input");
 const email =  document.getElementById("email-input");
-=======
-// input empty test
-let myInput = document.getElementById('username-input');
-document.getElementById("sign-inbtn").addEventListener("load", function (){
-    if (myInput.value === ''){
-        document.getElementById('sign-inbtn').disabled = true;
-        alert("no input");
-    }
-});
-
->>>>>>> c2c91420de3a3b684244ce67528658f82587ef6b
 const signInButton =  document.getElementById("sign-inbtn");
 const registerButton =  document.getElementById("register-details");
 const myReminders = []
@@ -76,22 +64,14 @@ signInButton.addEventListener("click", async () => {
         });
         console.log(myReminders)
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> c2c91420de3a3b684244ce67528658f82587ef6b
     username.value = "";
     email.value = "";
 });
 
 myRegister = () => {
-<<<<<<< HEAD
     document.getElementById('Register').style.display = "none"; 
 }
 
 const showMain = () => {
     window.location.href="main.html"
-=======
-    document.getElementById('Register').style.display = "none";
->>>>>>> c2c91420de3a3b684244ce67528658f82587ef6b
 }
