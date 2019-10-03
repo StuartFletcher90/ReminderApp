@@ -47,12 +47,6 @@ const myReminders = []
 
 
 
-const username = document.getElementById("username-input");
-const email = document.getElementById("email-input");
-
-
-
-
 registerButton.addEventListener("click", async () => {
     let response = await fetch(`http://localhost:3000/add?username=${username.value}&email=${email.value}`);
     let data = await response.json();
@@ -72,7 +66,7 @@ signInButton.addEventListener("click", async () => {
         data.forEach(ele => {
             myReminders.push(ele)
         });
-        console.log(myReminders)
+        console.log(myReminders);
 
     }
     username.value = "";
