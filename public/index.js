@@ -53,6 +53,7 @@ registerButton.addEventListener("click", async () => {
 })
 
 signInButton.addEventListener("click", async () => {
+    console.log(123)
 
     let response = await fetch (`http://192.168.5.29:3000/signin?username=${username.value}&email=${email.value}`);
 
@@ -80,3 +81,13 @@ const showMain = () => {
     window.location.href="main.html"
 }
 
+// function change
+function chg() {
+    document.getElementById("remindertable").style.width = "80%";
+    document.getElementById("remindertable").style.height = "80%";
+  }
+
+  function chg2() {
+    document.getElementById("remindertable").style.width = "30%";
+    document.getElementById("remindertable").style.height = "30%";
+  }
