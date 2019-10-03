@@ -29,6 +29,7 @@ document.getElementById("register-btn").addEventListener("click", function () {
     document.getElementById("register-details").style.display = "block";
 });
 
+
 // input empty test
 mySuccess = () => {
     if (document.getElementById("username-input").value===""){
@@ -38,8 +39,11 @@ mySuccess = () => {
     }
 }
 
+const username =  document.getElementById("username-input");
+const email =  document.getElementById("email-input");
 const signInButton =  document.getElementById("sign-inbtn");
 const registerButton =  document.getElementById("register-details");
+const myReminders = []
 
 
 
@@ -64,20 +68,23 @@ signInButton.addEventListener("click", async () => {
     if (data.length == 0) {
         console.log("You are not registered! Please sign up")
     } else {
-        showMain();
-        // data.forEach(ele => {
-        //     console.log(ele)
-        // });
-    }
+        //showMain();
+        data.forEach(ele => {
+            myReminders.push(ele)
+        });
+        console.log(myReminders)
 
+    }
     username.value = "";
     email.value = "";
 });
 
 myRegister = () => {
+
     document.getElementById('Register').style.display = "none";
 }
 
-const showMain = () => {
-                window.location.href = "main.html";
-    }
+const showMain = () => {
+    window.location.href="main.html"
+}
+
