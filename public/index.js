@@ -45,10 +45,6 @@ const signInButton =  document.getElementById("sign-inbtn");
 const registerButton =  document.getElementById("register-details");
 const myReminders = []
 
-
-
-
-
 registerButton.addEventListener("click", async () => {
     let response = await fetch(`http://192.168.5.29:3000/add?username=${username.value}&email=${email.value}`);
     let data = await response.json();
