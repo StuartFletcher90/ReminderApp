@@ -14,7 +14,7 @@
             <div class="container">
                 <h1 class="lead-heading">Reminder App!</h1>
                 <div id="splash">         
-                <input type="text" placeholder="Enter Username" id="username-input" class="input-box">
+                <input type="text" placeholder="Enter Username" id="username-input" class="input-box" onkeyup="mySuccess()">
                 <input type="text" placeholder="Enter Email" id="email-input" class="input-box">
                 </div>
             <div id="splash2"class="btn-div"> 
@@ -23,8 +23,8 @@
             </div>
             <div id="splash3" class="return">
                 <button id="returnbtn" class="btnStyle">Return</button>
-                <button onclick="location.href='main.html'" id="sign-inbtn" class="btnStyle">Sign In</button>
-                <button onclick="location.href='main.html'" id="register-details" class="btnStyle">Sign Up</button>
+                <button id="sign-inbtn" class="btnStyle" disabled>Sign In</button>
+                <button id="register-details" class="btnStyle">Sign Up</button>
             </div>
 
             </div>

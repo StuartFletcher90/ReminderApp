@@ -1,7 +1,6 @@
 {
   "name": "reminderapp",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "dependencies": {
     "express": "^4.17.1",
@@ -21,5 +20,6 @@
   "bugs": {
     "url": "https://github.com/TomKirbz/ReminderApp/issues"
   },
-  "homepage": "https://github.com/TomKirbz/ReminderApp#readme"
+  "homepage": "https://github.com/TomKirbz/ReminderApp#readme",
+  "description": ""
 }

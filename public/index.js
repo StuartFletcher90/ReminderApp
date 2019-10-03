@@ -29,6 +29,16 @@ document.getElementById("register-btn").addEventListener("click", function () {
     document.getElementById("register-details").style.display = "block";
 });
 
+
+// input empty test
+mySuccess = () => {
+    if (document.getElementById("username-input").value===""){
+        document.getElementById("sign-inbtn").disabled = true;
+    } else {
+        document.getElementById("sign-inbtn").disabled = false;
+    }
+}
+
 const username =  document.getElementById("username-input");
 const email =  document.getElementById("email-input");
 const signInButton =  document.getElementById("sign-inbtn");
@@ -63,15 +73,18 @@ signInButton.addEventListener("click", async () => {
             myReminders.push(ele)
         });
         console.log(myReminders)
+
     }
     username.value = "";
     email.value = "";
 });
 
 myRegister = () => {
-    document.getElementById('Register').style.display = "none"; 
+
+    document.getElementById('Register').style.display = "none";
 }
 
 const showMain = () => {
     window.location.href="main.html"
 }
+
