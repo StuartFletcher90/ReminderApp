@@ -38,7 +38,7 @@ const signIn = async (username, email) => {
             // WHERE username="${username}" AND email="${email}"`
             // `SELECT * FROM users WHERE username="${username}" AND email="${email}"`
 
-            `SELECT username, reminder_content FROM reminders
+            `SELECT reminder_content FROM reminders
             RIGHT JOIN users ON reminders.user_id = users.id
             WHERE username="${username}" AND email="${email}"`
 

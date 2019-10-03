@@ -29,17 +29,11 @@ document.getElementById("register-btn").addEventListener("click", function () {
     document.getElementById("register-details").style.display = "block";
 });
 
-// input empty test
-let myInput = document.getElementById('username-input');
-document.getElementById("sign-inbtn").addEventListener("load", function (){
-    if (myInput.value === ''){
-        document.getElementById('sign-inbtn').disabled = true;
-        alert("no input");
-    }
-});
-
+const username =  document.getElementById("username-input");
+const email =  document.getElementById("email-input");
 const signInButton =  document.getElementById("sign-inbtn");
 const registerButton =  document.getElementById("register-details");
+const myReminders = []
 
 
 
@@ -64,15 +58,20 @@ signInButton.addEventListener("click", async () => {
     if (data.length == 0) {
         console.log("You are not registered! Please sign up")
     } else {
+        //showMain();
         data.forEach(ele => {
-            console.log(ele)
+            myReminders.push(ele)
         });
+        console.log(myReminders)
     }
-
     username.value = "";
     email.value = "";
 });
 
 myRegister = () => {
-    document.getElementById('Register').style.display = "none";
+    document.getElementById('Register').style.display = "none"; 
+}
+
+const showMain = () => {
+    window.location.href="main.html"
 }
