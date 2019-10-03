@@ -11,7 +11,7 @@
 <body>
     
         <div id="wrapper">
-            <div class="container showMe">
+            <div class="container hideMe">
                 <h1 class="lead-heading">Reminder App!</h1>
                 <div id="splash">         
                 <input type="text" placeholder="Enter Username" id="username-input" class="input-box" onkeyup="mySuccess()">
@@ -30,12 +30,13 @@
             
             
             
-            <div onmouseover="chg()" onmouseout="chg2()" class="container-two hideMe" id="remindertable">
+            <div onmouseover="chg()" onmouseout="chg2()" class="container-two showMe" id="remindertable">
                     <h1> My Reminders!</h1>
                     <div id="myDiv" class="header">
                         <input type="text" id="myInput" placeholder="Set a reminder">
                         <span id="addtolist" class="addBtn">Add</span>
                         <h2 id="users-name"></h2>
+                        <button type="submit" id="sign-outbtn">Sign out</button>
                     <ul id="myUL">
                         
                     </ul>
