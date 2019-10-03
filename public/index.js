@@ -30,9 +30,9 @@ document.getElementById("register-btn").addEventListener("click", function() {
 
 const username =  document.getElementById("username-input");
 const email =  document.getElementById("email-input");
-
 const signInButton =  document.getElementById("sign-inbtn");
 const registerButton =  document.getElementById("register-details");
+const myReminders = []
 
 
 registerButton.addEventListener("click", async () => {
@@ -48,9 +48,11 @@ signInButton.addEventListener("click", async () => {
     if (data.length == 0) {
         console.log("You are not registered! Please sign up")
     } else {
+        //showMain();
         data.forEach(ele => {
-            console.log(ele)
+            myReminders.push(ele)
         });
+        console.log(myReminders)
     }
     
     username.value = "";
@@ -59,4 +61,8 @@ signInButton.addEventListener("click", async () => {
 
 myRegister = () => {
     document.getElementById('Register').style.display = "none"; 
+}
+
+const showMain = () => {
+    window.location.href="main.html"
 }
