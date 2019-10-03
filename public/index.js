@@ -30,13 +30,13 @@ document.getElementById("register-btn").addEventListener("click", function () {
 });
 
 // input empty test
-let myInput = document.getElementById('username-input');
-document.getElementById("sign-inbtn").addEventListener("load", function (){
-    if (myInput.value === ''){
-        document.getElementById('sign-inbtn').disabled = true;
-        alert("no input");
+mySuccess = () => {
+    if (document.getElementById("username-input").value===""){
+        document.getElementById("sign-inbtn").disabled = true;
+    } else {
+        document.getElementById("sign-inbtn").disabled = false;
     }
-});
+}
 
 const signInButton =  document.getElementById("sign-inbtn");
 const registerButton =  document.getElementById("register-details");
@@ -64,9 +64,10 @@ signInButton.addEventListener("click", async () => {
     if (data.length == 0) {
         console.log("You are not registered! Please sign up")
     } else {
-        data.forEach(ele => {
-            console.log(ele)
-        });
+        showMain();
+        // data.forEach(ele => {
+        //     console.log(ele)
+        // });
     }
 
     username.value = "";
@@ -76,3 +77,7 @@ signInButton.addEventListener("click", async () => {
 myRegister = () => {
     document.getElementById('Register').style.display = "none";
 }
+
+const showMain = () => {
+                window.location.href = "main.html";
+    }

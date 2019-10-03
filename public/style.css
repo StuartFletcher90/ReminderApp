@@ -59,7 +59,9 @@ body, html {
     margin-right: 6px;
     margin-bottom: 15px;
     width: 20%;
-    height: 15%;
+    height: 20px;
+    border: 2px solid black;
+    border-radius: 8%;
     display: none;
 }
 
@@ -74,7 +76,7 @@ body, html {
 #register-details {
   display: none;
 }
-
+/* button css & flex */
 .btnStyle {
     border-radius: 4px;
     background-color: #3A7BF2;
@@ -114,6 +116,53 @@ body, html {
   color: white;
   border: 2px solid white;
 }
+#splash{
+  display: flex;
+  justify-content: center;
+}
+#splash3 {
+  display: flex;
+  justify-content: center;
+}
+
+/* button css */
+#returnbtn{
+  background-color: rgb(204, 21, 21);
+  border: 2px solid rgba(247, 8, 8, 0.705);
+  transition-duration: 0.4s;
+}
+
+#returnbtn:hover {
+  background-color: rgb(0, 0, 0);
+  color: white;
+  border: 2px solid rgb(255, 255, 255);
+}
+
+
+#sign-inbtn{
+  background-color: rgb(13, 182, 50);
+  border: 2px solid rgb(13, 182, 50);
+  transition-duration: 0.4s;
+}
+
+#sign-inbtn:hover {
+  background-color: rgb(255, 255, 255);
+  color: black;
+  border: 2px solid rgb(0, 0, 0);
+}
+
+#register-details{
+  background-color: rgb(13, 182, 50);
+  border: 2px solid rgb(13, 182, 50);
+  transition-duration: 0.4s;
+}
+
+#register-details:hover {
+  background-color: rgb(255, 255, 255);
+  color: black;
+  border: 2px solid rgb(0, 0, 0);
+}
+
   /* .btnStyle span {
     cursor: pointer;
     display: inline-block;
