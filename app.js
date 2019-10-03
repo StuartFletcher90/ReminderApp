@@ -51,13 +51,6 @@ const signIn = async (username, email) => {
         } else {
             console.log("Logging you in....")
             return data;
-            // {
-            // id: data[0].id,
-            // username: data[0].username,
-            // email: data[0].email, 
-            // reminderId: data[0].rId,
-            // reminderContent: data[0].reminder_content
-            // };
         }   
     } catch (error) {
         // console.log(error)
@@ -65,14 +58,6 @@ const signIn = async (username, email) => {
         
     }
 }
-
-// const listReminders = () => {
-    
-//     for (let i = 0; i < rdata.length; i++) {
-        
-//     }
-
-// }
 
     
 

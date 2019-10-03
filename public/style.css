@@ -96,6 +96,10 @@ body, html {
 .hideMe {
   display: none;
 }
+
+.showMe {
+  display: block;
+}
 /* button css & flex */
 .btnStyle {
     border-radius: 4px;
@@ -189,6 +193,20 @@ body, html {
 
 /*! REMINDER PAGE CSSS */
 
+#myDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#myUL {
+  width: 60%;
+
+}
+li {
+  width: 60%;
+}
   /* Remove margins and padding from the list */ 
   ul { 
     margin: 0;
@@ -198,7 +216,6 @@ body, html {
   /* Style the list items */
   ul li {
     cursor: pointer;
-    position: relative;
     padding: 2px 8px 12px 40px;
     background: #eee;
     font-size: 18px;
@@ -213,12 +230,12 @@ body, html {
   
   /* Set all odd list items to a different color (zebra-stripes) */
    ul li:nth-child(odd) {
-    background: #f9f9f9;
+    background: #f9f9f980;
   } 
   
   /* Darker background-color on hover */
    ul li:hover {
-    background: #ddd;
+    background: rgba(221, 221, 221, 0.699);
   } 
   
   /* When clicked on, add a background color and strike out text */
@@ -231,12 +248,9 @@ body, html {
   /* Add a "checked" mark when clicked on */
    ul li.checked::before {
     content: '';
-    position: absolute;
     border-color: #fff;
     border-style: solid;
     border-width: 0 2px 2px 0;
-    top: 10px;
-    left: 16px;
     transform: rotate(45deg);
     height: 15px;
     width: 7px;

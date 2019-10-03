@@ -1,3 +1,6 @@
+const cont1 = document.getElementsByClassName("container")[0];
+const cont2 = document.getElementsByClassName("container-two")[0];
+
 // Sign in button stufff
 document.getElementById("sign-upbtn").addEventListener("click", function () {
     document.getElementById("splash2").style.display = "none";
@@ -48,7 +51,6 @@ const usersName = document.getElementById("users-name")
 const myReminders = []
 
 registerButton.addEventListener("click", async () => {
-    let response = await fetch(`http://192.168.5.29:3000/add?username=${username.value}&email=${email.value}`);
     let response = await fetch(`/add?username=${username.value}&email=${email.value}`);
     let data = await response.json();
     username.value = "";
@@ -56,9 +58,6 @@ registerButton.addEventListener("click", async () => {
 })
 
 signInButton.addEventListener("click", async () => {
-    console.log(123)
-
-    let response = await fetch (`http://192.168.5.29:3000/signin?username=${username.value}&email=${email.value}`);
     let response = await fetch (`/signin?username=${username.value}&email=${email.value}`,{
         method: 'GET',
         mode: "no-cors",
@@ -69,13 +68,7 @@ signInButton.addEventListener("click", async () => {
     if (data.length == 0) {
         console.log("You are not registered! Please sign up")
     } else {
-         showMain();
-        data.forEach(ele => {
-            myReminders.push(ele)
-        });
-        console.log(myReminders)
-
-        //showMain();
+        showMain();
         for (let i = 0; i < data.length; i++) {
             let li = document.createElement("li");
             let t = document.createTextNode(Object.values(data[i]));
@@ -95,6 +88,11 @@ myRegister = () => {
 
 const showMain = () => {
     
+    cont1.classList.remove("showMe");
+    cont1.classList.add("hideMe");
+    cont2.classList.remove("hideMe");
+    cont2.classList.add("showMe");
+    
 }
 
 // function change
@@ -107,3 +105,68 @@ function chg() {
     document.getElementById("remindertable").style.width = "30%";
     document.getElementById("remindertable").style.height = "30%";
   }
+
+
+
+
+
+/! PETERS JS FILE -- REMAINDER PAGE/
+
+
+
+
+// Create a "close" button and append it to each list item
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+// Click on a close button to hide the current list item
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+// Add a "checked" symbol when clicking on a list item
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+// Create a new list item when clicking on the "Add" button
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("Please write a reminder!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}

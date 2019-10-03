@@ -9,8 +9,9 @@
     <title>Reminder App</title>
 </head>
 <body>
-        <div id="wrapper" class="wrapper">
-            <div class="container">
+    
+        <div id="wrapper">
+            <div class="container showMe">
                 <h1 class="lead-heading">Reminder App!</h1>
                 <div id="splash">         
                 <input type="text" placeholder="Enter Username" id="username-input" class="input-box" onkeyup="mySuccess()">
@@ -26,19 +27,23 @@
                 <button id="register-details" class="btnStyle">Sign Up</button> 
             </div>
             </div>
-            </div>
-
-                <div onmouseover="chg()" onmouseout="chg2()" class="container-two container hideMe" id="remindertable">
+            
+            
+            
+            <div onmouseover="chg()" onmouseout="chg2()" class="container-two hideMe" id="remindertable">
                     <h1> My Reminders!</h1>
-                    <div id="myDIV" class="header hideMe">
+                    <div id="myDiv" class="header">
                         <input type="text" id="myInput" placeholder="Set a reminder">
                         <span onclick="newElement()" class="addBtn">Add</span>
-                      </div>
-                      <h2 id="users-name"></h2>
-                      <ul id="myUL">
+                        <h2 id="users-name"></h2>
+                            <ul id="myUL">
                         
-                      </ul>
+                            </ul>
+                    </div>
+                    
                 </div>
+                
+            </div>
 
     
     <script src="index.js"></script>
