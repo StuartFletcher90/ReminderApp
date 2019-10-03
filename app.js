@@ -72,6 +72,19 @@ const signIn = async (username, email) => {
     }
 }
 
+const refresh = async (username, email) => {
+    try {
+        let data = await promisifiedQuery(
+            `SELECT reminder_content FROM reminders
+            RIGHT JOIN users ON reminders.user_id = users.id
+            WHERE username="${username}" AND email="${email}"`
+        );
+        return data
+    } catch (error) {
+        console.log(data)
+    }
+}
+
     
 
 module.exports = {
@@ -79,5 +92,6 @@ module.exports = {
     addUser,
     signIn,
     addReminder,
+    refresh,
 }
 
