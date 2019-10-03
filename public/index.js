@@ -73,14 +73,15 @@ signInButton.addEventListener("click", async () => {
     } else {
         showMain();
         for (let i = 0; i < data.length; i++) {
+            let ul = document.getElementById("myUL");
             let li = document.createElement("li");
-            let t = document.createTextNode(Object.values(data[i]));
-            li.appendChild(t);
-            document.getElementById("myUL").appendChild(li);
+            let button = document.createElement("button");
+            li.appendChild(document.createTextNode(Object.values(data[i])));
+            li.appendChild(button);
+            ul.appendChild(li);
         }
         usersName.innerText = `Welcome back ${username.value}`
-        // console.log(data)
-        // currentUser = 0
+        
     }
     currentUsername = username.value;
     currentEmail = email.value;
@@ -88,14 +89,18 @@ signInButton.addEventListener("click", async () => {
 
 addToList.addEventListener("click", async ()=> {
     let response = await fetch(`/addreminder?username=${currentUsername}&email=${currentEmail}&reminderContent=${reminderContent.value}`);
-    let data = await response.json();
-    // for (let i = 0; i < data.length; i++) {
-    //     let li = document.createElement("li");
-    //     let t = document.createTextNode(Object.values(data[i]));
-    //     li.appendChild(t);
-    //     document.getElementById("myUL").appendChild(li);
-    // }
-    console.log(data)
+    let response2 = await fetch(`/refresh?username=${currentUsername}&email=${currentEmail}`)
+    let data = await response2.json();
+    for (let i = data.length-1; i < data.length; i++) {
+        let li = document.createElement("li");
+        let t = document.createTextNode(Object.values(data[i]));
+        li.appendChild(t);
+        document.getElementById("myUL").appendChild(li);
+    }
+    
+
+
+
 });
 
 
@@ -135,7 +140,7 @@ function chg() {
 
 
 // Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("li");
+var myNodelist = document.getElementsByTagName("LI");
 var i;
 for (i = 0; i < myNodelist.length; i++) {
   var span = document.createElement("SPAN");
