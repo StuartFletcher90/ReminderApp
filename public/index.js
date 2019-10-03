@@ -54,7 +54,6 @@ signInButton.addEventListener("click", async () => {
         });
         console.log(myReminders)
     }
-    
     username.value = "";
     email.value = "";
 });
