@@ -276,6 +276,7 @@ li {
   /* Style the close button */
   .close {
     padding: 10px 10px 10px 15px;
+    position: absolute;
   } 
   
   /* Style the header */
