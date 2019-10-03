@@ -67,6 +67,7 @@ body, html {
     padding: 20px;
     text-align: center;
     transition: all .5s linear;
+    overflow: hidden;
   }
 
   /* button css */
@@ -191,7 +192,7 @@ body, html {
 
 
 
-/*! REMINDER PAGE CSSS */
+/*! PETERS REMINDER PAGE CSSSssssssss */
 
 #myDiv {
   display: flex;
@@ -201,11 +202,15 @@ body, html {
 }
 
 #myUL {
-  width: 60%;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
 
 }
 li {
-  width: 60%;
+  width: 80%;
 }
   /* Remove margins and padding from the list */ 
   ul { 
@@ -216,10 +221,11 @@ li {
   /* Style the list items */
   ul li {
     cursor: pointer;
-    padding: 2px 8px 12px 40px;
-    background: #eee;
+    padding: 2px 10px 8px 0px;
+    background: #e68e0bb9;
     font-size: 18px;
-    transition: 0.2s; 
+    transition: 0.2s;
+    
   
     /* make the list items unselectable */
      -webkit-user-select: none;
@@ -235,12 +241,14 @@ li {
   
   /* Darker background-color on hover */
    ul li:hover {
-    background: rgba(221, 221, 221, 0.699);
+    background: rgba(96, 253, 57, 0.699);
+    border: 2px solid black;
+    border-color: black;
   } 
   
   /* When clicked on, add a background color and strike out text */
   ul li.checked {
-    background: #888;
+    background: rgb(88, 88, 88);
     color: #fff;
     text-decoration: line-through;
   } 
@@ -258,15 +266,7 @@ li {
   
   /* Style the close button */
   .close {
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 12px 16px 12px 16px;
-  } 
-  
-  .close:hover {
-    background-color:grey;
-    color: white;
+    padding: 10px 10px 10px 15px;
   } 
   
   /* Style the header */
@@ -299,6 +299,8 @@ li {
   /* Style the "Add" button */
   .addBtn {
     padding: 10px;
+    border-radius: 12px;
+    margin-top: 5px;
     width: 25%;
     background: #e68e0b;
     color:white;
@@ -307,9 +309,10 @@ li {
     font-size: 16px;
     cursor: pointer;
     transition: 0.3s;
-    border-radius: 0;
   } 
   
    .addBtn:hover {
-    background-color: #bbb;
+    background-color: rgb(76, 219, 76);
+    border: 2px black solid;
+    color: black;
   }
