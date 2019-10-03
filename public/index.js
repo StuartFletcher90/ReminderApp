@@ -42,13 +42,16 @@ mySuccess = () => {
     }
 }
 
+
 const username =  document.getElementById("username-input");
 const email =  document.getElementById("email-input");
 const signInButton =  document.getElementById("sign-inbtn");
 const registerButton =  document.getElementById("register-details");
-const myRemindersHTML = document.getElementById("my-reminders")
+const addToList = document.getElementById("addtolist");
 const usersName = document.getElementById("users-name")
-const myReminders = []
+const reminderContent = document.getElementById("myInput");
+let currentUsername = "";
+let currentEmail = "";
 
 registerButton.addEventListener("click", async () => {
     let response = await fetch(`/add?username=${username.value}&email=${email.value}`);
@@ -76,10 +79,26 @@ signInButton.addEventListener("click", async () => {
             document.getElementById("myUL").appendChild(li);
         }
         usersName.innerText = `Welcome back ${username.value}`
+        // console.log(data)
+        // currentUser = 0
     }
-    username.value = "";
-    email.value = "";
+    currentUsername = username.value;
+    currentEmail = email.value;
 });
+
+addToList.addEventListener("click", async ()=> {
+    let response = await fetch(`/addreminder?username=${currentUsername}&email=${currentEmail}&reminderContent=${reminderContent.value}`);
+    let data = await response.json();
+    // for (let i = 0; i < data.length; i++) {
+    //     let li = document.createElement("li");
+    //     let t = document.createTextNode(Object.values(data[i]));
+    //     li.appendChild(t);
+    //     document.getElementById("myUL").appendChild(li);
+    // }
+    console.log(data)
+});
+
+
 
 myRegister = () => {
 

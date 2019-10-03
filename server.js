@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require('path');
-const {getData, addUser, signIn} = require("./app.js");
+const {getData, addUser, signIn, addReminder} = require("./app.js");
 const app = express();
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -18,8 +18,12 @@ app.get('/add', async (req, res) => {
 app.get('/signin', async (req, res) => {
     let data = await signIn(req.query.username, req.query.email);
     res.send(data)
-    console.log(data)
 });
+
+app.get('/addreminder', async (req, res) => {
+    let data = await addReminder(req.query.username, req.query.email, req.query.reminderContent);
+    res.send(data)
+})
 
 
 
