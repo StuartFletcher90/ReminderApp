@@ -191,8 +191,9 @@ body, html {
 
 #sign-outbtn {
   display: flex;
-  background-color: rgba(58, 122, 242, 0.637);
-  border-color: rgba(58,122,242, 0.637);
+  /* background-color: rgba(58, 122, 242, 0.637);
+  border-color: rgba(58,122,242, 0.637); */
+  background-color: transparent;
   justify-content: flex-start;
   color: white;
   height: 30px;
