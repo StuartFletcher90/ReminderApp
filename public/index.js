@@ -97,10 +97,6 @@ addToList.addEventListener("click", async ()=> {
         li.appendChild(t);
         document.getElementById("myUL").appendChild(li);
     }
-    
-
-
-
 });
 
 
@@ -118,6 +114,15 @@ const showMain = () => {
     cont2.classList.add("showMe");
     
 }
+
+const signOut = () => {
+    cont1.classList.remove("hideMe");
+    cont1.classList.add("showMe");
+    cont2.classList.remove("showMe");
+    cont2.classList.add("hideMe");
+}
+
+document.getElementById('sign-outbtn').addEventListener('click', signOut());
 
 // function change
 function chg() {
