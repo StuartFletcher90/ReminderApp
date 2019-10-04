@@ -114,6 +114,7 @@ const showMain = () => {
     cont2.classList.add("showMe");
     
 }
+document.getElementById('sign-outbtn').addEventListener('click', signOut());
 
 const signOut = () => {
     cont1.classList.remove("hideMe");
@@ -121,9 +122,6 @@ const signOut = () => {
     cont2.classList.remove("showMe");
     cont2.classList.add("hideMe");
 }
-
-document.getElementById('sign-outbtn').addEventListener('click', signOut());
-
 // function change
 function chg() {
     document.getElementById("remindertable").style.width = "80%";
