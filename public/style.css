@@ -244,13 +244,10 @@ li {
     margin: 0;
     padding: 0;
     list-style: none;
-<<<<<<< HEAD
   }
 
   ul button {
     margin-left: 50px;
-=======
->>>>>>> d16a431ea0864594abe902fe250a4abba0cb6e72
   }
   
   ul button { 
@@ -381,10 +378,11 @@ li {
     height: 20%;
 
   }}
+
 @media screen and (max-device-width: 980px) {
-  
+ 
   .container{
-    display: flex;
+    display: flexbox;
     font-size: 50px;
     padding: 100px;
     border: 8px solid black;
@@ -395,32 +393,39 @@ li {
   }
 }
 @media screen and (max-device-width: 980px) {
-  
-  /* .container-two{
-    display: flex;
-    font-size: 50px;
-    padding: 100px;
+ 
+  .container-two{
+    display: flexbox;
+    font-size: 10px;
+    /* padding: 100px; */
     border: 8px solid black;
     flex-direction: column;
     align-items: center;
-    width: 50%;
-  
-  }it pull
-} */
- 
+    width: 100%;
+    
+  }
+}
+@media screen and (max-device-width: 980px){
+#delButton{
+  padding: 5px 5px 5px 5px;
+  position: absolute;
+  width: 10%;
+} }
 
- 
   @media screen and (max-device-width: 980px){
     .btnStyle{
     width: 50%;
     
-    }}
-   
+    }} 
+    
+
     @media screen and (max-device-width: 980px){
       #splash{
       width: 100%;
       
       }}
+
+
       @media screen and (max-device-width: 980px){
         .btnStyle{
         width: 50%;
@@ -428,13 +433,36 @@ li {
         }}
         @media screen and (max-device-width: 980px){
           .input-box{
-          width: 65%;
+          width: 75%;
           
           
           }}
+
           @media screen and (max-device-width: 980px){
             .input-box ::placeholder{
             font-size: 10px;
             
             
-            }}
+            }};
+            /* @media screen and (max-device-width: 980px){
+              #myUl{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+                
+              
+              
+              }}; */
+@media screen and (max-device-width: 980px){
+  #sign-outbtn    {    
+  
+  background-color: transparent;
+            justify-content: flex-start;
+            color: rgb(15, 13, 13);
+            height: 10px;
+            width: 20px;
+            border-radius: 2px;}}
+
+     
