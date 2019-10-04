@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require('path');
-const {getData, addUser, signIn, addReminder, refresh} = require("./app.js");
+const {getData, addUser, signIn, addReminder, refresh, deleteRem} = require("./app.js");
 const app = express();
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -28,7 +28,12 @@ app.get('/addreminder', async (req, res) => {
 app.get('/refresh', async (req, res) => {
     let data = await refresh(req.query.username, req.query.email);
     res.send(data)
-})
+});
+
+app.get('/deletereminder', async (req, res) => {
+    let data = await deleteRem(req.query.username, req.query.email, req.query.reminder_id);
+    res.send(data)
+});
 
 app.listen(3000, ()=> {
     console.log("Listening on port 3000")
