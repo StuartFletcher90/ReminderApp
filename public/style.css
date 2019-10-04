@@ -5,10 +5,6 @@ body, html {
     font-family: 'Lato', sans-serif;
 
   }
-
-  /* * {
-    box-sizing: border-box;
-  } */
 .lead-heading{
     font-size: 50px;
     color: white;
@@ -194,7 +190,7 @@ body, html {
 }
 
 @keyframes mymove {
-  50% {box-shadow: 10px 20px 30px rgba(0, 183, 255, 0.568);}
+  50% {box-shadow: 10px 20px 30px 30px rgba(0, 183, 255, 0.568);}
 }
 
 
@@ -225,8 +221,13 @@ li {
   ul { 
     margin: 0;
     padding: 0;
+    list-style: none;
   }
   
+  ul button { 
+    margin-left: 20px;
+  }
+
   /* Style the list items */
   ul li {
     cursor: pointer;
