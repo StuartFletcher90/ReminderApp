@@ -42,7 +42,6 @@ mySuccess = () => {
     }
 }
 
-
 const username =  document.getElementById("username-input");
 const email =  document.getElementById("email-input");
 const signInButton =  document.getElementById("sign-inbtn");
@@ -67,27 +66,23 @@ const showMain = () => {
   cont2.classList.add("showMe");  
 }
 
-
 const mainPage = async () => {
     let response = await fetch (`/signin?username=${username.value}&email=${email.value}`,{
         method: 'GET',
         mode: "no-cors",
         content: 'application/json'
     });
-
     var e = document.querySelector("ul"); 
         var child = e.lastElementChild;  
         while (child) { 
         e.removeChild(child); 
         child = e.lastElementChild;
         }
-
     let data = await response.json();
     if (data.length == 0) {
         console.log("You are not registered! Please sign up")
     } else {
         showMain();
-        //console.log(data[0].reminder_content)
         for (let i = 0; i < data.length; i++) {
             let deleteButton = "delButton";
             let ul = document.getElementById("myUL");
@@ -99,11 +94,9 @@ const mainPage = async () => {
             ul.appendChild(li);
             button.addEventListener("click", ()=> {
             removeFromList(data[i].reminder_id)
-            //mainPage();
             })
         }
-        usersName.innerText = `Welcome back ${username.value}`
-        
+        usersName.innerText = `Welcome back ${username.value}`  
     }
     currentUsername = username.value;
     currentEmail = email.value;
@@ -111,47 +104,29 @@ const mainPage = async () => {
 
 addToList.addEventListener("click", async ()=> {
     let response = await fetch(`/addreminder?username=${currentUsername}&email=${currentEmail}&reminderContent=${reminderContent.value}`);
-    let response2 = await fetch(`/refresh?username=${currentUsername}&email=${currentEmail}`)
-    let data = await response2.json();
-    for (let i = data.length-1; i < data.length; i++) {
-      let deleteButton = "delButton";
-      let ul = document.getElementById("myUL");
-      let li = document.createElement("li");
-      let button = document.createElement("button");
-      button.setAttribute('id', deleteButton)
-      li.appendChild(document.createTextNode(data[i].reminder_content));
-      li.appendChild(button);
-      ul.appendChild(li);
-      button.addEventListener("click", ()=> {
-        removeFromList(data[i].reminder_id)
-      })
-  }
-  mainPage();
+    mainPage();
 });
 
 const removeFromList = async (reminder_id)=> {
   let response = await fetch(`/deletereminder?username=${currentUsername}&email=${currentEmail}&reminder_id=${reminder_id}`);
-  let response2 = await fetch(`/refresh?username=${currentUsername}&email=${currentEmail}`)
-  let data = await response2.json();
   mainPage()
 };
 
 signInButton.addEventListener("click", ()=> mainPage())
 
-
 myRegister = () => {
-
-    document.getElementById('Register').style.display = "none";
+document.getElementById('Register').style.display = "none";
 }
-
-
 
 const signOut = () => {
     cont1.classList.remove("hideMe");
     cont1.classList.add("showMe");
     cont2.classList.remove("showMe");
     cont2.classList.add("hideMe");
-    console.log("test")
+    currentUsername = "";
+    currentEmail = "";
+    username.value = "";
+    email.value = "";
 }
 
 document.getElementById('sign-outbtn').addEventListener('click', ()=> signOut());
@@ -168,67 +143,4 @@ function chg() {
   }
 
 
-
-
-
-/! PETERS JS FILE -- REMAINDER PAGE/
-
-
-
-
-// Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
-}
-
-// Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function() {
-    var div = this.parentElement;
-    div.style.display = "none";
-  }
-}
-
-// Add a "checked" symbol when clicking on a list item
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
-  }
-}, false);
-
-// Create a new list item when clicking on the "Add" button
-function newElement() {
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("myInput").value;
-  var t = document.createTextNode(inputValue);
-  li.appendChild(t);
-  if (inputValue === '') {
-    alert("Please write a reminder!");
-  } else {
-    document.getElementById("myUL").appendChild(li);
-  }
-  document.getElementById("myInput").value = "";
-
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
-
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
-    }
-  }
-}
 
