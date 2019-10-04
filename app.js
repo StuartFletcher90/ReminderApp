@@ -50,10 +50,9 @@ const signIn = async (username, email) => {
             // WHERE username="${username}" AND email="${email}"`
             // `SELECT * FROM users WHERE username="${username}" AND email="${email}"`
 
-            `SELECT reminder_content FROM reminders
+            `SELECT reminder_id, reminder_content FROM reminders
             RIGHT JOIN users ON reminders.user_id = users.id
             WHERE username="${username}" AND email="${email}"`
-
 
         );
         // for each data = push data[i].reminderContent
@@ -64,10 +63,11 @@ const signIn = async (username, email) => {
         } else {
             console.log("Logging you in....")
             return data;
+            
         }   
     } catch (error) {
-        // console.log(error)
-        console.log("There was an error Signing In")
+        console.log(error)
+        //console.log("There was an error Signing In")
         
     }
 }
@@ -85,6 +85,20 @@ const refresh = async (username, email) => {
     }
 }
 
+const deleteRem = async (username, email, reminder_id) => {
+    try {
+        let data = await promisifiedQuery(
+            `DELETE reminders FROM reminders 
+            RIGHT JOIN users ON reminders.user_id = users.id
+            WHERE reminder_id="${reminder_id}" AND username="${username}" AND email="${email}"`
+        );
+        console.log("Reminder Removed");
+        return data;
+    } catch (error) {
+        console.log(data)
+    }
+}
+
     
 
 module.exports = {
@@ -93,5 +107,6 @@ module.exports = {
     signIn,
     addReminder,
     refresh,
+    deleteRem,
 }
 
