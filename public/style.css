@@ -189,8 +189,25 @@ body, html {
   border: 2px solid rgb(0, 0, 0);
 }
 
+#sign-outbtn {
+  display: flex;
+  /* background-color: rgba(58, 122, 242, 0.637);
+  border-color: rgba(58,122,242, 0.637); */
+  background-color: transparent;
+  justify-content: flex-start;
+  color: white;
+  height: 30px;
+  width: 50px;
+  border-radius: 4px;
+
+}
+
+#sign-outbtn:hover {
+  background-color: rgba(255, 0, 0, 0.404);
+  border-color: rgba(255, 0, 0, 0.301);
+}
 @keyframes mymove {
-  50% {box-shadow: 10px 20px 30px 30px rgba(0, 183, 255, 0.568);}
+  50% {box-shadow: 1px 1px 10px 10px rgba(0, 183, 255, 0.568);}
 }
 
 #sign-outbtn {

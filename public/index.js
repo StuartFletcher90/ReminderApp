@@ -109,8 +109,6 @@ const mainPage = async () => {
     currentEmail = email.value;
 }
 
-
-
 addToList.addEventListener("click", async ()=> {
     let response = await fetch(`/addreminder?username=${currentUsername}&email=${currentEmail}&reminderContent=${reminderContent.value}`);
     let response2 = await fetch(`/refresh?username=${currentUsername}&email=${currentEmail}`)
@@ -132,12 +130,6 @@ addToList.addEventListener("click", async ()=> {
 });
 
 const removeFromList = async (reminder_id)=> {
-  // var e = document.querySelector("ul"); 
-  //       var child = e.lastElementChild;  
-  //       while (child) { 
-  //       e.removeChild(child); 
-  //       child = e.lastElementChild;
-  //       }
   let response = await fetch(`/deletereminder?username=${currentUsername}&email=${currentEmail}&reminder_id=${reminder_id}`);
   let response2 = await fetch(`/refresh?username=${currentUsername}&email=${currentEmail}`)
   let data = await response2.json();
@@ -159,9 +151,10 @@ const signOut = () => {
     cont1.classList.add("showMe");
     cont2.classList.remove("showMe");
     cont2.classList.add("hideMe");
+    console.log("test")
 }
 
-document.getElementById('sign-outbtn').addEventListener('click', signOut());
+document.getElementById('sign-outbtn').addEventListener('click', ()=> signOut());
 
 // function change
 function chg() {
