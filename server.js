@@ -31,7 +31,7 @@ app.get('/refresh', async (req, res) => {
 });
 
 app.get('/deletereminder', async (req, res) => {
-    let data = await deleteRem(req.query.username, req.query.email, req.query.reminderContent);
+    let data = await deleteRem(req.query.username, req.query.email, req.query.reminder_id);
     res.send(data)
 });
 

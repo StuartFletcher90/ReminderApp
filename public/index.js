@@ -60,63 +60,91 @@ registerButton.addEventListener("click", async () => {
     email.value = "";
 })
 
-signInButton.addEventListener("click", async () => {
+const showMain = () => {
+  cont1.classList.remove("showMe");
+  cont1.classList.add("hideMe");
+  cont2.classList.remove("hideMe");
+  cont2.classList.add("showMe");  
+}
+
+
+const mainPage = async () => {
     let response = await fetch (`/signin?username=${username.value}&email=${email.value}`,{
         method: 'GET',
         mode: "no-cors",
         content: 'application/json'
     });
 
+    var e = document.querySelector("ul"); 
+        var child = e.lastElementChild;  
+        while (child) { 
+        e.removeChild(child); 
+        child = e.lastElementChild;
+        }
+
     let data = await response.json();
     if (data.length == 0) {
         console.log("You are not registered! Please sign up")
     } else {
         showMain();
+        //console.log(data[0].reminder_content)
         for (let i = 0; i < data.length; i++) {
+            let deleteButton = "delButton";
             let ul = document.getElementById("myUL");
             let li = document.createElement("li");
             let button = document.createElement("button");
-            li.appendChild(document.createTextNode(Object.values(data[i])));
+            button.setAttribute('id', deleteButton)
+            li.appendChild(document.createTextNode(data[i].reminder_content));
             li.appendChild(button);
             ul.appendChild(li);
+            button.addEventListener("click", ()=> {
+            removeFromList(data[i].reminder_id)
+            //mainPage();
+            })
         }
         usersName.innerText = `Welcome back ${username.value}`
         
     }
     currentUsername = username.value;
     currentEmail = email.value;
-});
+}
+
+
 
 addToList.addEventListener("click", async ()=> {
     let response = await fetch(`/addreminder?username=${currentUsername}&email=${currentEmail}&reminderContent=${reminderContent.value}`);
     let response2 = await fetch(`/refresh?username=${currentUsername}&email=${currentEmail}`)
     let data = await response2.json();
     for (let i = data.length-1; i < data.length; i++) {
+      let deleteButton = "delButton";
       let ul = document.getElementById("myUL");
       let li = document.createElement("li");
       let button = document.createElement("button");
-      li.appendChild(document.createTextNode(Object.values(data[i])));
+      button.setAttribute('id', deleteButton)
+      li.appendChild(document.createTextNode(data[i].reminder_content));
       li.appendChild(button);
       ul.appendChild(li);
-    }
+      button.addEventListener("click", ()=> {
+        removeFromList(data[i].reminder_id)
+      })
+  }
+  mainPage();
 });
 
-removeFromList.addEventListener("click", async ()=> {
-  let response = await fetch(`/addreminder?username=${currentUsername}&email=${currentEmail}&reminderContent=${reminderContent.value}`);
-    let response2 = await fetch(`/refresh?username=${currentUsername}&email=${currentEmail}`)
-    let data = await response2.json();
-    for (let i = data.length-1; i < data.length; i++) {
-      let ul = document.getElementById("myUL");
-      let li = document.createElement("li");
-      let button = document.createElement("button");
-      li.appendChild(document.createTextNode(Object.values(data[i])));
-      li.appendChild(button);
-      ul.appendChild(li);
-    }
-});
+const removeFromList = async (reminder_id)=> {
+  // var e = document.querySelector("ul"); 
+  //       var child = e.lastElementChild;  
+  //       while (child) { 
+  //       e.removeChild(child); 
+  //       child = e.lastElementChild;
+  //       }
+  let response = await fetch(`/deletereminder?username=${currentUsername}&email=${currentEmail}&reminder_id=${reminder_id}`);
+  let response2 = await fetch(`/refresh?username=${currentUsername}&email=${currentEmail}`)
+  let data = await response2.json();
+  mainPage()
+};
 
-
-
+signInButton.addEventListener("click", ()=> mainPage())
 
 
 myRegister = () => {
@@ -124,14 +152,16 @@ myRegister = () => {
     document.getElementById('Register').style.display = "none";
 }
 
-const showMain = () => {
-    
-    cont1.classList.remove("showMe");
-    cont1.classList.add("hideMe");
-    cont2.classList.remove("hideMe");
-    cont2.classList.add("showMe");
-    
+
+
+const signOut = () => {
+    cont1.classList.remove("hideMe");
+    cont1.classList.add("showMe");
+    cont2.classList.remove("showMe");
+    cont2.classList.add("hideMe");
 }
+
+document.getElementById('sign-outbtn').addEventListener('click', signOut());
 
 // function change
 function chg() {
@@ -208,3 +238,4 @@ function newElement() {
     }
   }
 }
+
