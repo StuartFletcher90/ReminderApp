@@ -92,16 +92,30 @@ addToList.addEventListener("click", async ()=> {
     let response2 = await fetch(`/refresh?username=${currentUsername}&email=${currentEmail}`)
     let data = await response2.json();
     for (let i = data.length-1; i < data.length; i++) {
-        let li = document.createElement("li");
-        let t = document.createTextNode(Object.values(data[i]));
-        li.appendChild(t);
-        document.getElementById("myUL").appendChild(li);
+      let ul = document.getElementById("myUL");
+      let li = document.createElement("li");
+      let button = document.createElement("button");
+      li.appendChild(document.createTextNode(Object.values(data[i])));
+      li.appendChild(button);
+      ul.appendChild(li);
     }
-    
-
-
-
 });
+
+removeFromList.addEventListener("click", async ()=> {
+  let response = await fetch(`/addreminder?username=${currentUsername}&email=${currentEmail}&reminderContent=${reminderContent.value}`);
+    let response2 = await fetch(`/refresh?username=${currentUsername}&email=${currentEmail}`)
+    let data = await response2.json();
+    for (let i = data.length-1; i < data.length; i++) {
+      let ul = document.getElementById("myUL");
+      let li = document.createElement("li");
+      let button = document.createElement("button");
+      li.appendChild(document.createTextNode(Object.values(data[i])));
+      li.appendChild(button);
+      ul.appendChild(li);
+    }
+});
+
+
 
 
 

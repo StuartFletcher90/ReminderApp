@@ -54,7 +54,6 @@ const signIn = async (username, email) => {
             RIGHT JOIN users ON reminders.user_id = users.id
             WHERE username="${username}" AND email="${email}"`
 
-
         );
         // for each data = push data[i].reminderContent
 
@@ -85,6 +84,16 @@ const refresh = async (username, email) => {
     }
 }
 
+const deleteRem = async (username, email, reminderContent) => {
+    try {
+        let data = await promisifiedQuery(
+            
+        );
+    } catch (error) {
+        console.log(data)
+    }
+}
+
     
 
 module.exports = {
@@ -93,5 +102,6 @@ module.exports = {
     signIn,
     addReminder,
     refresh,
+    deleteRem,
 }
 

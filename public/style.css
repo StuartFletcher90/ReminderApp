@@ -67,7 +67,7 @@ body, html {
     padding: 20px;
     text-align: center;
     transition: all .5s linear;
-    overflow: hidden;
+    overflow: scroll;
   }
 
   /* button css */
@@ -197,6 +197,10 @@ body, html {
   50% {box-shadow: 10px 20px 30px rgba(0, 183, 255, 0.568);}
 }
 
+#sign-outbtn {
+  display: flex;
+  justify-content: flex-end;
+}
 
 
 
@@ -222,9 +226,15 @@ li {
   width: 80%;
 }
   /* Remove margins and padding from the list */ 
+
   ul { 
     margin: 0;
     padding: 0;
+    list-style: none;
+  }
+
+  ul button {
+    margin-left: 50px;
   }
   
   /* Style the list items */
@@ -234,6 +244,9 @@ li {
     background: #e68e0bb9;
     font-size: 18px;
     transition: 0.2s;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
     
   
     /* make the list items unselectable */
