@@ -26,7 +26,16 @@ list.addEventListener('click', function(ev) {
     ev.target.classList.toggle('checked');
   }
 }, false);
+// singout button 
+document.getElementById("sing-outbtn").addEventListener("click", function () {
+  document.getElementById("splash2").style.display = "block";
+  document.getElementById("username-input").style.display = "none";
+  document.getElementById("email-input").style.display = "none";
+  document.getElementById("returnbtn").style.display = "none";
+  document.getElementById("sign-inbtn").style.display = "none";
+  document.getElementById("register-details").style.display = "none";
 
+  
 // Create a new list item when clicking on the "Add" button
 function newElement() {
   var li = document.createElement("li");
@@ -54,3 +63,5 @@ function newElement() {
   }
 }
 
+
+  

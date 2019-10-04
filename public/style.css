@@ -20,7 +20,7 @@ body, html {
   content: '';
 }
 #wrapper::before {
-  background-image: url(./note-3454277.jpg);
+  background-image: url(./background.jpg);
   filter: blur(3px);
   background-repeat: no-repeat;
   background-position: center;
@@ -327,3 +327,82 @@ li {
     border: 2px black solid;
     color: black;
   }
+
+/* MEDIA QUerYYYYYY */
+@media screen and (max-device-width: 980px) {
+  #wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    content: '';
+    background-color: #3A7BF2;
+    background-image: url(./background.jpg)
+  }}
+
+  @media screen and (max-device-width: 980px) {
+  .lead-heading{
+    font-size: 20px;
+    color: white;
+    height: 20%;
+
+  }}
+@media screen and (max-device-width: 980px) {
+  
+  .container{
+    display: flex;
+    font-size: 50px;
+    padding: 100px;
+    border: 8px solid black;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+  
+  }
+}
+@media screen and (max-device-width: 980px) {
+  
+  /* .container-two{
+    display: flex;
+    font-size: 50px;
+    padding: 100px;
+    border: 8px solid black;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+  
+  }
+} */
+ 
+
+ 
+  @media screen and (max-device-width: 980px){
+    .btnStyle{
+    width: 50%;
+    
+    }}
+   
+    @media screen and (max-device-width: 980px){
+      #splash{
+      width: 100%;
+      
+      }}
+      @media screen and (max-device-width: 980px){
+        .btnStyle{
+        width: 50%;
+        
+        }}
+        @media screen and (max-device-width: 980px){
+          .input-box{
+          width: 65%;
+          
+          
+          }}
+          @media screen and (max-device-width: 980px){
+            .input-box ::placeholder{
+            font-size: 10px;
+            
+            
+            }}
