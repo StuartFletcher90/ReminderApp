@@ -10,15 +10,6 @@ const connection = mysql.createConnection({
 
 const promisifiedQuery = promisify(connection.query).bind(connection);
 
-const getData = async () => {
-    try {
-        let data = await promisifiedQuery("SELECT * FROM users");
-        return data;
-    } catch (error) {
-        console.log(error.sqlMessage);
-    }
-    connection.end();
-}
 
 const addUser = async (username, email) => {
     try {
@@ -45,17 +36,11 @@ const addReminder = async (username, email, reminderContent) => {
 const signIn = async (username, email) => {
     try {
         let data = await promisifiedQuery(
-            // `SELECT users.*, reminders.reminder_content, reminders.id AS rId FROM users
-            // LEFT JOIN reminders ON users.id = reminders.user_id
-            // WHERE username="${username}" AND email="${email}"`
-            // `SELECT * FROM users WHERE username="${username}" AND email="${email}"`
-
             `SELECT reminder_id, reminder_content FROM reminders
             RIGHT JOIN users ON reminders.user_id = users.id
             WHERE username="${username}" AND email="${email}"`
 
         );
-        // for each data = push data[i].reminderContent
 
         if (data.length == 0) {
             console.log("You are not registered! Please sign up");
@@ -63,11 +48,11 @@ const signIn = async (username, email) => {
         } else {
             console.log("Logging you in....")
             return data;
-            
         }   
+
     } catch (error) {
         console.log(error)
-        //console.log("There was an error Signing In")
+        console.log("There was an error Signing In")
         
     }
 }
@@ -79,7 +64,8 @@ const refresh = async (username, email) => {
             RIGHT JOIN users ON reminders.user_id = users.id
             WHERE username="${username}" AND email="${email}"`
         );
-        return data
+        return data;
+
     } catch (error) {
         console.log(data)
     }
@@ -99,10 +85,8 @@ const deleteRem = async (username, email, reminder_id) => {
     }
 }
 
-    
 
 module.exports = {
-    getData,
     addUser,
     signIn,
     addReminder,

@@ -5,6 +5,16 @@ body, html {
     font-family: 'Lato', sans-serif;
 
   }
+h1 {
+  margin-bottom: 0;
+}
+h2 {
+  margin: 5px;
+}
+
+#NotRegged {
+  color: red;
+}
 .lead-heading{
     font-size: 50px;
     color: white;

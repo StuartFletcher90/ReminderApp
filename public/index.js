@@ -32,7 +32,6 @@ document.getElementById("register-btn").addEventListener("click", function () {
     document.getElementById("register-details").style.display = "block";
 });
 
-
 // input empty test
 mySuccess = () => {
     if (document.getElementById("username-input").value===""){
@@ -42,19 +41,19 @@ mySuccess = () => {
     }
 }
 
+const NotRegged = document.getElementById("NotRegged")
 const username =  document.getElementById("username-input");
 const email =  document.getElementById("email-input");
 const signInButton =  document.getElementById("sign-inbtn");
 const registerButton =  document.getElementById("register-details");
 const addToList = document.getElementById("addtolist");
 const usersName = document.getElementById("users-name")
-const reminderContent = document.getElementById("myInput");
+let reminderContent = document.getElementById("myInput");
 let currentUsername = "";
 let currentEmail = "";
 
 registerButton.addEventListener("click", async () => {
-    let response = await fetch(`/add?username=${username.value}&email=${email.value}`);
-    let data = await response.json();
+    await fetch(`/add?username=${username.value}&email=${email.value}`);
     username.value = "";
     email.value = "";
 })
@@ -72,47 +71,61 @@ const mainPage = async () => {
         mode: "no-cors",
         content: 'application/json'
     });
-    var e = document.querySelector("ul"); 
-        var child = e.lastElementChild;  
-        while (child) { 
-        e.removeChild(child); 
-        child = e.lastElementChild;
-        }
+    resetList();
     let data = await response.json();
     if (data.length == 0) {
-        console.log("You are not registered! Please sign up")
+      NotRegged.innerText = "Cannot recognize username or email. Have you registered?";
+      username.value = "";
+      email.value = "";
     } else {
         showMain();
-        for (let i = 0; i < data.length; i++) {
-            let deleteButton = "delButton";
-            let ul = document.getElementById("myUL");
-            let li = document.createElement("li");
-            let button = document.createElement("button");
-            button.setAttribute('id', deleteButton)
-            li.appendChild(document.createTextNode(data[i].reminder_content));
-            li.appendChild(button);
-            ul.appendChild(li);
-            button.addEventListener("click", ()=> {
-            removeFromList(data[i].reminder_id)
-            })
-        }
-        usersName.innerText = `Welcome back ${username.value}`  
+        buildList(data);
+        usersName.innerText = `Welcome back ${username.value}`
     }
-    currentUsername = username.value;
-    currentEmail = email.value;
+      currentUsername = username.value;
+      currentEmail = email.value;
+      
+      
+}
+
+const resetList = () => { 
+  var ReminderList = document.querySelector("ul"); 
+  var child = ReminderList.lastElementChild;  
+  while (child) { 
+  ReminderList.removeChild(child); 
+  child = ReminderList.lastElementChild;
+  }
+}
+
+const buildList = (data) => {
+  for (let i = 0; i < data.length; i++) {
+    let deleteButton = "delButton";
+    let ul = document.getElementById("myUL");
+    let li = document.createElement("li");
+    let button = document.createElement("button");
+    button.setAttribute('id', deleteButton)
+    li.appendChild(document.createTextNode(data[i].reminder_content));
+    li.appendChild(button);
+    ul.appendChild(li);
+    button.addEventListener("click", ()=> {
+    removeFromList(data[i].reminder_id)
+    })
+}
 }
 
 addToList.addEventListener("click", async ()=> {
-    let response = await fetch(`/addreminder?username=${currentUsername}&email=${currentEmail}&reminderContent=${reminderContent.value}`);
-    mainPage();
+  await fetch(`/addreminder?username=${currentUsername}&email=${currentEmail}&reminderContent=${reminderContent.value}`);
+  mainPage();
+  reminderContent.value = "";
 });
 
 const removeFromList = async (reminder_id)=> {
-  let response = await fetch(`/deletereminder?username=${currentUsername}&email=${currentEmail}&reminder_id=${reminder_id}`);
+  await fetch(`/deletereminder?username=${currentUsername}&email=${currentEmail}&reminder_id=${reminder_id}`);
   mainPage()
 };
 
 signInButton.addEventListener("click", ()=> mainPage())
+registerButton.addEventListener("click", ()=> mainPage())
 
 myRegister = () => {
 document.getElementById('Register').style.display = "none";
