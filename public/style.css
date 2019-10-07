@@ -11,6 +11,10 @@ h1 {
 h2 {
   margin: 5px;
 }
+span {
+  margin: 0;
+  padding: 0;
+}
 
 #NotRegged {
   color: red;
@@ -156,6 +160,10 @@ h2 {
   justify-content: center;
 }
 
+.wobbleMe {
+  animation-duration: 3s;
+}
+
 /* button css */
 #returnbtn{
   background-color: rgb(204, 21, 21);
@@ -267,13 +275,14 @@ li {
   /* Style the list items */
   ul li {
     cursor: pointer;
-    padding: 2px 10px 8px 0px;
+    padding: 2px 10px 8px 15px;
     background: #e68e0bb9;
     font-size: 18px;
     transition: 0.2s;
     list-style: none;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     
   
     /* make the list items unselectable */
@@ -313,12 +322,12 @@ li {
     width: 7px;
   } 
   
-  /* Style the close button */
-  .close {
-    padding: 10px 10px 10px 15px;
-    position: absolute;
-    
-  } 
+  /* // Style the close button // */
+  #delButton {
+    font-size: 30px;
+    color: red;
+    font-weight: 300;
+  }
   
   /* Style the header */
    .header {
@@ -407,7 +416,7 @@ li {
 @media screen and (max-device-width: 780px){
 #delButton{
   padding: 5px 5px 5px 5px;
-  position: absolute;
+  color: red;
   width: 10%;
 } }
 
@@ -448,7 +457,9 @@ li {
             position: absolute;
             right: 0;
             top: 0;
-            padding: 12px 16px 12px 16px; }}
+            padding: 12px 16px 12px 16px;
+            content: 'x';
+            font-weight: 300;}}
 
             
             
@@ -472,6 +483,7 @@ li {
             color: rgb(15, 13, 13);
             height: 10px;
             width: 20px;
-            border-radius: 2px;}}
+            border-radius: 2px;
+        }}
 
      

@@ -16,6 +16,7 @@ const addUser = async (username, email) => {
         let data = await promisifiedQuery(
         `INSERT INTO users (username, email) VALUES ('${username}', '${email}')`);
         console.log("User Added");
+        signIn(username, email);
     } catch (error) {
         console.log("There was an error adding the user");
     }
@@ -41,7 +42,6 @@ const signIn = async (username, email) => {
             WHERE username="${username}" AND email="${email}" `
 
         );
-//AND reminder_content IS NOT NULL
         if (data.length == 0) {
             //console.log("You are not registered! Please sign up");
             return data;

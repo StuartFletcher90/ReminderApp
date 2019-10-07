@@ -6,12 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <title>Reminder App</title>
 </head>
 <body>
     
         <div id="wrapper">
-            <div class="container showMe">
+            <div class="container showMe wobbleMe">
                 <h1 class="lead-heading">Reminder App!</h1>     
                 <h2 id="NotRegged"></h2>   
                 <div id="splash">
@@ -31,7 +32,7 @@
             
             
             
-            <div onmouseover="chg()" onmouseout="chg2()" class="container-two hideMe" id="remindertable">
+            <div onmouseover="chg()"  class="container-two hideMe" id="remindertable">
                     <button type="submit" id="sign-outbtn">Sign out</button>
                     <h1> My Reminders!</h1>
                     <div id="myDiv" class="header">
@@ -51,3 +52,4 @@
     <script src="index.js"></script>
 </body>
 </html>
+
