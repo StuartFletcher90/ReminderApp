@@ -146,6 +146,11 @@ body, html {
   justify-content: center;
 }
 
+.wobbleMe {
+  animation-duration: 3s;
+  animation-delay: 1s;
+}
+
 /* button css */
 #returnbtn{
   background-color: rgb(204, 21, 21);
@@ -244,13 +249,6 @@ li {
     margin: 0;
     padding: 0;
     list-style: none;
-<<<<<<< HEAD
-  }
-
-  ul button {
-    margin-left: 50px;
-=======
->>>>>>> d16a431ea0864594abe902fe250a4abba0cb6e72
   }
   
   ul button { 
@@ -394,7 +392,7 @@ li {
   
   }
 }
-@media screen and (max-device-width: 980px) {
+/* @media screen and (max-device-width: 980px) { */
   
   /* .container-two{
     display: flex;
@@ -410,31 +408,29 @@ li {
  
 
  
-  @media screen and (max-device-width: 980px){
-    .btnStyle{
-    width: 50%;
+@media screen and (max-device-width: 980px){
+  .btnStyle{
+  width: 50%;
     
-    }}
+}}
    
-    @media screen and (max-device-width: 980px){
-      #splash{
-      width: 100%;
+@media screen and (max-device-width: 980px){
+  #splash{
+  width: 100%;
       
-      }}
-      @media screen and (max-device-width: 980px){
-        .btnStyle{
-        width: 50%;
+}}
+@media screen and (max-device-width: 980px){
+  .btnStyle{
+  width: 50%;
         
-        }}
-        @media screen and (max-device-width: 980px){
-          .input-box{
-          width: 65%;
+}}
+@media screen and (max-device-width: 980px){
+  .input-box{
+  width: 65%;
           
-          
-          }}
-          @media screen and (max-device-width: 980px){
-            .input-box ::placeholder{
-            font-size: 10px;
+}}
+@media screen and (max-device-width: 980px){
+.input-box ::placeholder{
+font-size: 10px;
             
-            
-            }}
+}}
