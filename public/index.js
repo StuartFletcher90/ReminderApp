@@ -104,7 +104,6 @@ const mainPage = async () => {
     }
     currentUsername = username.value;
     currentEmail = email.value;
-};
 
 addToList.addEventListener("click", async ()=> {
     let response = await fetch(`/addreminder?username=${currentUsername}&email=${currentEmail}&reminderContent=${reminderContent.value}`);
@@ -144,7 +143,4 @@ function chg() {
   function chg2() {
     document.getElementById("remindertable").style.width = "30%";
     document.getElementById("remindertable").style.height = "30%";
-  }
-
-
-
+}

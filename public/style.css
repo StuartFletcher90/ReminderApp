@@ -250,6 +250,10 @@ li {
     padding: 0;
     list-style: none;
   }
+
+  ul button {
+    margin-left: 50px;
+  }
   
   ul button { 
     margin-left: 20px;
@@ -308,6 +312,7 @@ li {
   .close {
     padding: 10px 10px 10px 15px;
     position: absolute;
+    
   } 
   
   /* Style the header */
@@ -359,7 +364,7 @@ li {
   }
 
 /* MEDIA QUerYYYYYY */
-@media screen and (max-device-width: 980px) {
+@media screen and (max-device-width: 780px) {
   #wrapper {
     display: flex;
     justify-content: center;
@@ -372,17 +377,18 @@ li {
     background-image: url(./background.jpg)
   }}
 
-  @media screen and (max-device-width: 980px) {
+  @media screen and (max-device-width: 780px) {
   .lead-heading{
     font-size: 20px;
     color: white;
     height: 20%;
 
   }}
-@media screen and (max-device-width: 980px) {
-  
+
+@media screen and (max-device-width: 780px) {
+ 
   .container{
-    display: flex;
+    display: flexbox;
     font-size: 50px;
     padding: 100px;
     border: 8px solid black;
@@ -392,45 +398,75 @@ li {
   
   }
 }
-/* @media screen and (max-device-width: 980px) { */
-  
-  /* .container-two{
-    display: flex;
-    font-size: 50px;
-    padding: 100px;
-    border: 8px solid black;
-    flex-direction: column;
-    align-items: center;
-    width: 50%;
-  
-  }it pull
-} */
- 
 
- 
-@media screen and (max-device-width: 980px){
-  .btnStyle{
-  width: 50%;
+@media screen and (max-device-width: 780px){
+#delButton{
+  padding: 5px 5px 5px 5px;
+  position: absolute;
+  width: 10%;
+} }
+
+  @media screen and (max-device-width: 780px){
+    .btnStyle{
+    width: 50%;
     
-}}
-   
-@media screen and (max-device-width: 980px){
-  #splash{
-  width: 100%;
+    }} 
+    
+
+    @media screen and (max-device-width: 780px){
+      #splash{
+      width: 100%;
       
-}}
-@media screen and (max-device-width: 980px){
-  .btnStyle{
-  width: 50%;
+      }}
+
+
+      @media screen and (max-device-width: 780px){
+        .btnStyle{
+        width: 50%;
         
-}}
-@media screen and (max-device-width: 980px){
-  .input-box{
-  width: 65%;
+        }}
+        @media screen and (max-device-width: 780px){
+          .input-box{
+          width: 75%;
           
-}}
-@media screen and (max-device-width: 980px){
-.input-box ::placeholder{
-font-size: 10px;
+          
+          }}
+
+          @media screen and (max-device-width: 780px){
+            .input-box ::placeholder{
+            font-size: 10px;
+
+            }}
+
+            @media screen and (max-device-width: 780px){
+            .close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 12px 16px 12px 16px; }}
+
             
-}}
+            
+           
+            /* @media screen and (max-device-width: 980px){
+              #myUl{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+                
+              
+              
+              }}; */
+@media screen and (max-device-width: 780px){
+  #sign-outbtn    {    
+  
+  background-color: transparent;
+            justify-content: flex-start;
+            color: rgb(15, 13, 13);
+            height: 10px;
+            width: 20px;
+            border-radius: 2px;}}
+
+     
