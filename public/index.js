@@ -132,6 +132,15 @@ const signOut = () => {
     email.value = "";
 }
 
+// const wobbleChange = () => {    
+//     cont1.classList.add("wobbleMe");
+//     cont1.classList.remove("wobbleMe");
+// }
+// document.getElementById('sign-outbtn').addEventListener('click', ()=> wobbleChange());
+
+// Wobble animation
+
+
 document.getElementById('sign-outbtn').addEventListener('click', ()=> signOut());
 
 // function change
