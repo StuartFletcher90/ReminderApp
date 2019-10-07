@@ -5,6 +5,20 @@ body, html {
     font-family: 'Lato', sans-serif;
 
   }
+h1 {
+  margin-bottom: 0;
+}
+h2 {
+  margin: 5px;
+}
+span {
+  margin: 0;
+  padding: 0;
+}
+
+#NotRegged {
+  color: red;
+}
 .lead-heading{
     font-size: 50px;
     color: white;
@@ -148,7 +162,6 @@ body, html {
 
 .wobbleMe {
   animation-duration: 3s;
-  animation-delay: 1s;
 }
 
 /* button css */
@@ -263,13 +276,14 @@ li {
   /* Style the list items */
   ul li {
     cursor: pointer;
-    padding: 2px 10px 8px 0px;
+    padding: 2px 10px 8px 15px;
     background: #e68e0bb9;
     font-size: 18px;
     transition: 0.2s;
     list-style: none;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     
   
     /* make the list items unselectable */
@@ -309,14 +323,12 @@ li {
     width: 7px;
   } 
   
-  /* Style the close button */
-  .close {
-    padding: 10px 10px 10px 15px;
-    position: absolute;
-    content: 'x';
+  /* // Style the close button // */
+  #delButton {
+    font-size: 30px;
+    color: red;
     font-weight: 300;
-    
-  } 
+  }
   
   /* Style the header */
    .header {
@@ -405,7 +417,7 @@ li {
 @media screen and (max-device-width: 780px){
 #delButton{
   padding: 5px 5px 5px 5px;
-  position: absolute;
+  color: red;
   width: 10%;
 } }
 
