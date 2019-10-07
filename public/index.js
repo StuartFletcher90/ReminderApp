@@ -80,12 +80,11 @@ const mainPage = async () => {
         }
     let data = await response.json();
     if (data.length == 0) {
-        
-        console.log("You are not registered! Please sign up")
-    } else {
-        console.log("test")
         const element = document.querySelector('.wobbleMe')
         element.classList.add('animated', 'wobble')
+        console.log("You are not registered! Please sign up")
+    } else {
+        
         showMain();
         for (let i = 0; i < data.length; i++) {
             let deleteButton = "delButton";
@@ -104,6 +103,7 @@ const mainPage = async () => {
     }
     currentUsername = username.value;
     currentEmail = email.value;
+}
 
 addToList.addEventListener("click", async ()=> {
     let response = await fetch(`/addreminder?username=${currentUsername}&email=${currentEmail}&reminderContent=${reminderContent.value}`);
@@ -143,4 +143,4 @@ function chg() {
   function chg2() {
     document.getElementById("remindertable").style.width = "30%";
     document.getElementById("remindertable").style.height = "30%";
-}
+  }
