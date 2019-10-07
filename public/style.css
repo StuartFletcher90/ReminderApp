@@ -311,6 +311,8 @@ li {
   .close {
     padding: 10px 10px 10px 15px;
     position: absolute;
+    content: 'x';
+    font-weight: 300;
     
   } 
   
@@ -442,7 +444,9 @@ li {
             position: absolute;
             right: 0;
             top: 0;
-            padding: 12px 16px 12px 16px; }}
+            padding: 12px 16px 12px 16px;
+            content: 'x';
+            font-weight: 300;}}
 
             
             
@@ -466,6 +470,7 @@ li {
             color: rgb(15, 13, 13);
             height: 10px;
             width: 20px;
-            border-radius: 2px;}}
+            border-radius: 2px;
+        }}
 
      
