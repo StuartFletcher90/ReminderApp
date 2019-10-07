@@ -146,6 +146,11 @@ body, html {
   justify-content: center;
 }
 
+.wobbleMe {
+  animation-duration: 3s;
+  animation-delay: 1s;
+}
+
 /* button css */
 #returnbtn{
   background-color: rgb(204, 21, 21);
@@ -244,10 +249,6 @@ li {
     margin: 0;
     padding: 0;
     list-style: none;
-<<<<<<< HEAD
-
-=======
->>>>>>> 0de9f57ca2f41919e2321eb3dd142277f4314dac
   }
 
   ul button {
