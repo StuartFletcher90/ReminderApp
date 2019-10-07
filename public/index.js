@@ -99,9 +99,11 @@ const resetList = () => {
 
 const buildList = (data) => {
   if (data.length == 0) {
-  
-  }
-  for (let i = 0; i < data.length; i++) {
+    let ul = document.getElementById("myUL");
+    let li = document.createElement("li");
+    li.appendChild(document.createTextNode("You have no Reminders!"));
+    ul.appendChild(li);
+  } else { for (let i = 0; i < data.length; i++) {
     let deleteButton = "delButton";
     let ul = document.getElementById("myUL");
     let li = document.createElement("li");
@@ -113,7 +115,9 @@ const buildList = (data) => {
     button.addEventListener("click", ()=> {
     removeFromList(data[i].reminder_id)
     })
+}  
 }
+  
 }
 
 addToList.addEventListener("click", async ()=> {

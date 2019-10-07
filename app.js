@@ -14,8 +14,8 @@ const promisifiedQuery = promisify(connection.query).bind(connection);
 const addUser = async (username, email) => {
     try {
         let data = await promisifiedQuery(
-            `INSERT INTO users (username, email) VALUES ('${username}', '${email}')`);
-            console.log("User Added");
+        `INSERT INTO users (username, email) VALUES ('${username}', '${email}')`);
+        console.log("User Added");
     } catch (error) {
         console.log("There was an error adding the user");
     }
@@ -36,14 +36,14 @@ const addReminder = async (username, email, reminderContent) => {
 const signIn = async (username, email) => {
     try {
         let data = await promisifiedQuery(
-            `SELECT reminder_id, reminder_content FROM reminders
+            `SELECT username, reminder_id, reminder_content FROM reminders
             RIGHT JOIN users ON reminders.user_id = users.id
-            WHERE username="${username}" AND email="${email}"`
+            WHERE username="${username}" AND email="${email}" `
 
         );
-
+//AND reminder_content IS NOT NULL
         if (data.length == 0) {
-            console.log("You are not registered! Please sign up");
+            //console.log("You are not registered! Please sign up");
             return data;
         } else {
             console.log("Logging you in....")
