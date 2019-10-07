@@ -79,9 +79,9 @@ const mainPage = async () => {
         child = e.lastElementChild;
         }
     let data = await response.json();
-    if (data.length == 0) {
-        console.log("You are not registered! Please sign up")
-    } else {
+    // if (data.length == 0) {
+    //     console.log("You are not registered! Please sign up")
+    // } else {}
         showMain();
         for (let i = 0; i < data.length; i++) {
             let deleteButton = "delButton";
@@ -100,7 +100,7 @@ const mainPage = async () => {
     }
     currentUsername = username.value;
     currentEmail = email.value;
-}
+
 
 addToList.addEventListener("click", async ()=> {
     let response = await fetch(`/addreminder?username=${currentUsername}&email=${currentEmail}&reminderContent=${reminderContent.value}`);

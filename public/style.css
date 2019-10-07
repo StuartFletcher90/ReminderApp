@@ -244,13 +244,11 @@ li {
     margin: 0;
     padding: 0;
     list-style: none;
-<<<<<<< HEAD
+
   }
 
   ul button {
     margin-left: 50px;
-=======
->>>>>>> d16a431ea0864594abe902fe250a4abba0cb6e72
   }
   
   ul button { 
@@ -310,6 +308,7 @@ li {
   .close {
     padding: 10px 10px 10px 15px;
     position: absolute;
+    
   } 
   
   /* Style the header */
@@ -394,7 +393,7 @@ li {
   
   }
 }
-@media screen and (max-device-width: 980px) {
+/* @media screen and (max-device-width: 980px) { */
   
   /* .container-two{
     display: flex;
@@ -435,6 +434,11 @@ li {
           @media screen and (max-device-width: 980px){
             .input-box ::placeholder{
             font-size: 10px;
-            
-            
             }}
+
+            @media screen and (max-device-width: 980px){
+            .close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 12px 16px 12px 16px; }}
