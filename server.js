@@ -1,9 +1,14 @@
 const express = require("express");
 const path = require('path');
-const {addUser, signIn, addReminder, refresh, deleteRem} = require("./app.js");
+const {checkUser, addUser, signIn, addReminder, refresh, deleteRem} = require("./app.js");
 const app = express();
 
 app.use(express.static(path.join(__dirname, "public")));
+
+app.get('/check', async (req, res) => {
+    let data = await checkUser(req.query.username, req.query.email)
+    res.send(data)
+})
 
 app.get('/add', async (req, res) => {
     await addUser(req.query.username, req.query.email);
