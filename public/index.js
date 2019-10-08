@@ -42,6 +42,7 @@ mySuccess = () => {
 }
 
 // Main global vars
+const sound = new Audio();
 const NotRegged = document.getElementById("NotRegged")
 const username = document.getElementById("username-input");
 const email = document.getElementById("email-input");
@@ -72,6 +73,8 @@ const mainPage = async () => {
   let data = await response.json();
   if (data.length == 0) {
     NotRegged.innerHTML = "Cannot recognize username or email!"
+    sound.src = './quack.mp3';
+    sound.play();
     NotRegged.style.color = "red"
     const element = document.querySelector('.wobbleMe')
     element.classList.add('animated', 'wobble')
@@ -148,6 +151,8 @@ const removeFromList = async (reminder_id) => {
 //signs into reminder user
 signInButton.addEventListener("click", ()=> {
   if (username.value === "" || email.value === "") {
+    sound.src = './quack.mp3';
+    sound.play();
     NotRegged.innerText = "Please enter a valid username and email"
     NotRegged.style.color = "red"
   } else {
@@ -162,6 +167,8 @@ registerButton.addEventListener("click", async ()=> {
 if (data.length > 0) {
     NotRegged.innerText = "Sorry, that username or email already exists"
     NotRegged.style.color = "red"
+    sound.src = './quack.mp3';
+    sound.play();
     const element = document.querySelector('.wobbleMe')
     element.classList.add('animated', 'wobble')
     setTimeout(()=> { 
