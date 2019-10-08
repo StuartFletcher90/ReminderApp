@@ -10,6 +10,19 @@ const connection = mysql.createConnection({
 
 const promisifiedQuery = promisify(connection.query).bind(connection);
 
+const checkUser = async (username, email) => {
+    try {
+        let data = await promisifiedQuery(
+        `SELECT * FROM users WHERE username="${username}" OR email="${email}"`
+    );  
+    return data;
+
+    } catch (error) {
+        console.log(error)
+        console.log("error check")
+    }
+    
+}
 
 const addUser = async (username, email) => {
     try {
@@ -92,5 +105,6 @@ module.exports = {
     addReminder,
     refresh,
     deleteRem,
+    checkUser,
 }
 

@@ -41,6 +41,7 @@ mySuccess = () => {
   }
 }
 
+// Main global vars
 const NotRegged = document.getElementById("NotRegged")
 const username = document.getElementById("username-input");
 const email = document.getElementById("email-input");
@@ -52,12 +53,7 @@ let reminderContent = document.getElementById("myInput");
 let currentUsername = "";
 let currentEmail = "";
 
-registerButton.addEventListener("click", async () => {
-  await fetch(`/add?username=${username.value}&email=${email.value}`);
-  username.value = "";
-  email.value = "";
-})
-
+//hides the sign in page, opens the reminder page
 const showMain = () => {
   cont1.classList.remove("showMe");
   cont1.classList.add("hideMe");
@@ -65,6 +61,7 @@ const showMain = () => {
   cont2.classList.add("showMe");
 }
 
+// main function, resets and builds the list of reminders after fetching from the database
 const mainPage = async () => {
   let response = await fetch(`/signin?username=${username.value}&email=${email.value}`, {
     method: 'GET',
@@ -75,6 +72,7 @@ const mainPage = async () => {
   let data = await response.json();
   if (data.length == 0) {
     NotRegged.innerHTML = "Cannot recognize username or email!"
+    NotRegged.style.color = "red"
     const element = document.querySelector('.wobbleMe')
     element.classList.add('animated', 'wobble')
     setTimeout(()=> { 
@@ -93,6 +91,7 @@ const mainPage = async () => {
 
 }
 
+// deletes all children in the list
 const resetList = () => {
   var ReminderList = document.querySelector("ul");
   var child = ReminderList.lastElementChild;
@@ -102,6 +101,7 @@ const resetList = () => {
   }
 }
 
+// builds list in HTML UL after fetching from the database
 const buildList = (data) => {
   if (data[0].reminder_content == null) {
     let ul = document.getElementById("myUL");
@@ -127,27 +127,66 @@ const buildList = (data) => {
   }
 }
 
+//add reminder to list and database
 addToList.addEventListener("click", async () => {
-  await fetch(`/addreminder?username=${currentUsername}&email=${currentEmail}&reminderContent=${reminderContent.value}`);
-  mainPage();
-  reminderContent.value = "";
+  if (reminderContent.value == "") {
+    reminderContent.style.border = "3px solid red"
+  } else {
+    reminderContent.style.border = "none"
+    await fetch(`/addreminder?username=${currentUsername}&email=${currentEmail}&reminderContent=${reminderContent.value}`);
+    mainPage();
+    reminderContent.value = "";
+  }
 });
 
+//removes reminder from list and database
 const removeFromList = async (reminder_id) => {
   await fetch(`/deletereminder?username=${currentUsername}&email=${currentEmail}&reminder_id=${reminder_id}`);
   mainPage()
 };
 
-signInButton.addEventListener("click", () => mainPage())
-registerButton.addEventListener("click", function () {
-  document.getElementById("splash2").style.display = "none";
-  document.getElementById("sign-inbtn").style.display = "block";
-  document.getElementById("username-input").style.display = "block";
-  document.getElementById("email-input").style.display = "block";
-  document.getElementById("returnbtn").style.display = "block";
-  document.getElementById("register-details").style.display = "none";
+//signs into reminder user
+signInButton.addEventListener("click", ()=> {
+  if (username.value === "" || email.value === "") {
+    NotRegged.innerText = "Please enter a valid username and email"
+    NotRegged.style.color = "red"
+  } else {
+    mainPage()
+  }
 });
 
+//reg new user, chceks if that user already exsists.
+registerButton.addEventListener("click", async ()=> {
+  let response = await fetch(`/check?username=${username.value}&email=${email.value}`);
+  let data = await response.json();
+if (data.length > 0) {
+    NotRegged.innerText = "Sorry, that username or email already exists"
+    NotRegged.style.color = "red"
+    const element = document.querySelector('.wobbleMe')
+    element.classList.add('animated', 'wobble')
+    setTimeout(()=> { 
+      element.classList.remove('animated', 'wobble'); 
+    }, 1000);
+    username.value = "";
+    email.value = "";
+} else {
+    await fetch(`/add?username=${username.value}&email=${email.value}`);
+    NotRegged.innerText = "Thank you for Registering!";
+    NotRegged.style.color = "white"
+    username.value = "";
+    email.value = "";
+  
+  document.getElementById("splash2").style.display = "block";
+  document.getElementById("username-input").style.display = "none";
+  document.getElementById("email-input").style.display = "none";
+  document.getElementById("returnbtn").style.display = "none";
+  document.getElementById("sign-inbtn").style.display = "none";
+  document.getElementById("register-details").style.display = "none";
+}
+
+});
+
+//signs out, resets vars
 const signOut = () => {
   cont1.classList.remove("hideMe");
   cont1.classList.add("showMe");
@@ -159,9 +198,10 @@ const signOut = () => {
   email.value = "";
 }
 
+//function to sign out.
 document.getElementById('sign-outbtn').addEventListener('click', () => signOut());
 
-// function change
+// function to enlarge the reminder screen.
 
 const chg = () => {
   document.getElementById("remindertable").style.width = "80%";
